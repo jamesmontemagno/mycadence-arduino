@@ -8,7 +8,7 @@ Inspired & code forked from https://github.com/snowzach/echbt, which is an aweso
 
 ## Hardware Required
 
-* [MarkerFocus ESP32](https://amzn.to/2LAmqt4)
+* [MakerFocus ESP32](https://amzn.to/2LAmqt4)
 * [ESP32 Batteries(optional)](https://amzn.to/2KGfJWA)
 * [USB Micro Cable](https://amzn.to/2KSxstH)
 
@@ -17,6 +17,7 @@ Inspired & code forked from https://github.com/snowzach/echbt, which is an aweso
 * [Wahoo](https://amzn.to/2KEdC50)
 * [Magene](https://amzn.to/3raJ0Jd)
 * [Garmin](https://amzn.to/2WtSgdl)
+* Other cadence sensors that broadcast Speed & Cadence specification
 
 ### 3D Printable Case
 This is a really nice case that you can print from thingiverse. 
