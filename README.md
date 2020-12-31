@@ -38,7 +38,7 @@ The app will automatically scan for cadence sensors for 10 seconds. If it finds 
 
 Looking for an app for your phone or tablet to display the cadence? Checkout [My Cadence](https://mycadence.app), a simple display for your cadence sensor when you are indoor cycling. Simply connect to your cadence sensor via Bluetooth and my cadence will update your cadence in realtime with a simple to read display.
 
-![art](MyCadence.png)
+![art](art/MyCadence.png)
 
 ## License information
 
