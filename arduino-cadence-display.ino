@@ -13,8 +13,6 @@ static BLEClient* client;
 static BLEScan* scanner;
 
 static int cadence = 0;
-//static int resistance = 0;
-//static int power = 0;
 static unsigned long runtime = 0;
 static unsigned long last_millis = 0;
 
@@ -22,11 +20,11 @@ static int prevCumulativeCrankRev = 0;
 static int prevCrankTime = 0;
 static double rpm = 0;
 static double prevRPM = 0;
-static int prevCrankStaleness;
+static int prevCrankStaleness = 0;
 static int stalenessLimit = 4;
 
-#define debug 1
-//#define maxResistance 32
+#define debug 0
+#define maxCadence 120
 
 // Called when device sends update notification
 static void notifyCallback(BLERemoteCharacteristic* pBLERemoteCharacteristic, uint8_t* data, size_t length, bool isNotify) {
@@ -112,7 +110,8 @@ static void notifyCallback(BLERemoteCharacteristic* pBLERemoteCharacteristic, ui
   }
   
   cadence = (int)rpm;
-  
+  //Test
+  //cadence = cadence + 2;
   
   
   if(debug) {
@@ -184,6 +183,13 @@ void updateDisplay() {
   Heltec.display->drawXbm(0, 26, cadence_icon_width, cadence_icon_height, cadence_icon);
   itoa(cadence, buf, 10);
   Heltec.display->drawString(22, 22, buf);
+
+  uint8_t progress = 0;
+  if(cadence >= maxCadence)
+    progress = 100;
+  else
+    progress = uint8_t((100 * cadence) / maxCadence);
+  Heltec.display->drawProgressBar(0, 49, 126, 14, progress);
 
   Heltec.display->display();
 }
@@ -269,7 +275,7 @@ void loop() {
     Heltec.display->println("Starting Scan..");
     Heltec.display->drawLogBuffer(0, 0);
     Heltec.display->display();
-    scanner->start(6, false); // Scan for 5 seconds
+    scanner->start(16, false); // Scan for 15 seconds
     BLEDevice::getScan()->stop();
 
     device = selectDevice(); // Pick a device
@@ -281,7 +287,7 @@ void loop() {
         Heltec.display->println("connect...");
         Heltec.display->drawLogBuffer(0, 0);
         Heltec.display->display();
-        delay(1100);
+        delay(3100);
         return;
       }
     } else {
@@ -290,7 +296,7 @@ void loop() {
       Heltec.display->println("found...");
       Heltec.display->drawLogBuffer(0, 0);
       Heltec.display->display();
-      delay(1100);
+      delay(3100);
       return;
     }
   }
