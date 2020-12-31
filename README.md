@@ -1,6 +1,8 @@
-# arduino-cadence-display
+# My Cadence for Arduino
 
-This is an open source project to connect to popular cadence sensors for indoor cycling and display the current cadence in realtime. Inspired & code forked from https://github.com/snowzach/echbt, which is an awesome way of dislaying data from an Echelon bike.
+This is an open source project to connect to popular cadence sensors for indoor cycling and display the current cadence in realtime.  Looking for a free cadence display for iOS & Android? Checkout [My Cadence for iOS & Android](https://mycadence.app).
+
+Inspired & code forked from https://github.com/snowzach/echbt, which is an awesome way of dislaying data from an Echelon bike. 
 
 ![](art/cadence.png)
 
@@ -30,7 +32,7 @@ This is a really nice case that you can print from thingiverse.
 6. Add ESP32 BLE Arduino Library - https://github.com/nkolban/ESP32_BLE_Arduino
 7. Deploy to device!
 
-The app will automatically scan for cadence sensors for 15 seconds. If it finds a single sensor it will automatically connect and start reporting data! If there are multiple sensors detected you can pick on from the list.
+The app will automatically scan for cadence sensors for 10 seconds. If it finds a single sensor it will automatically connect and start reporting data! If there are multiple sensors detected you can pick on from the list.
 
 ## Get My Cadence for iOS & Android
 

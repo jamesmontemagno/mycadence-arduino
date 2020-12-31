@@ -275,7 +275,7 @@ void loop() {
     Heltec.display->println("Starting Scan..");
     Heltec.display->drawLogBuffer(0, 0);
     Heltec.display->display();
-    scanner->start(16, false); // Scan for 15 seconds
+    scanner->start(11, false); // Scan for 10 seconds
     BLEDevice::getScan()->stop();
 
     device = selectDevice(); // Pick a device
