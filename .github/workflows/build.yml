@@ -1,0 +1,35 @@
+name: Build Heltec WiFi Kit 32
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1.1.1
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install ESP32 tools
+        run: |
+          pip install esptool
+      - name: Install CLI dependencies
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install Heltec-esp32:esp32
+          arduino-cli lib update-index
+          arduino-cli lib install "Heltec ESP32 Dev-Boards"
+          arduino-cli lib install "ESP32 BLE Arduino"
+      - name: Build
+        run: |
+          arduino-cli compile --fqbn Heltec-esp32:esp32:wifi_kit_32 --export-binaries mycadence-arduino
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Heltec WiFi Kit 32
+          path: build/Heltec-esp32.esp32.wifi_kit_32/
+        
