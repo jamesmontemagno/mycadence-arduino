@@ -26,11 +26,28 @@ static int stalenessLimit = 4;
 #define debug 0
 #define maxCadence 120
 
+static bool is_bit_set(unsigned value, unsigned bitindex)
+{
+    return (value & (1 << bitindex)) != 0;
+}
+
 // Called when device sends update notification
 static void notifyCallback(BLERemoteCharacteristic* pBLERemoteCharacteristic, uint8_t* data, size_t length, bool isNotify) {
+
+
+  bool hasWheel = is_bit_set(data[0], 0);
+  bool hasCrank = is_bit_set(data[0], 1);
+
+  int crankRevIndex = 1;
+  int crankTimeIndex = 3;
+  if(hasWheel)
+  {
+    crankRevIndex = 7;
+    crankTimeIndex = 9;
+  }
   
-  int cumulativeCrankRev = int((data[2] << 8) + data[1]);
-  int lastCrankTime = int((data[4] << 8) + data[3]);
+  int cumulativeCrankRev = int((data[crankRevIndex + 1] << 8) + data[crankRevIndex]);
+  int lastCrankTime = int((data[crankTimeIndex + 1] << 8) + data[crankTimeIndex]);
 
   if(debug)    
   {
