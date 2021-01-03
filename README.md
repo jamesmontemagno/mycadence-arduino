@@ -6,6 +6,8 @@ Inspired & code forked from https://github.com/snowzach/echbt, which is an aweso
 
 ![](art/cadence.png)
 
+* Build Status: ![Build Heltec WiFi Kit 32](https://github.com/jamesmontemagno/mycadence-arduino/workflows/Build%20Heltec%20WiFi%20Kit%2032/badge.svg)
+
 ## Hardware Required
 
 * [MakerFocus ESP32](https://amzn.to/2LAmqt4)
