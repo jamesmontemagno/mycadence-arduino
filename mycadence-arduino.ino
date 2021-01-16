@@ -22,9 +22,12 @@ static double rpm = 0;
 static double prevRPM = 0;
 static int prevCrankStaleness = 0;
 static int stalenessLimit = 4;
+static int scanCount = 0;
 
 #define debug 0
 #define maxCadence 120
+
+
 
 static bool is_bit_set(unsigned value, unsigned bitindex)
 {
@@ -144,6 +147,11 @@ static void notifyCallback(BLERemoteCharacteristic* pBLERemoteCharacteristic, ui
       Serial.print(data[x], HEX);
     }
     Serial.println();
+  }
+
+  if(digitalRead(KEY_BUILTIN) == LOW)
+  {
+    esp_deep_sleep_start();
   }
 }
 
@@ -307,12 +315,19 @@ void loop() {
         delay(3100);
         return;
       }
+      scanCount = 0;
     } else {
       Serial.println("No device found...");
       Heltec.display->println("No device"); 
       Heltec.display->println("found...");
       Heltec.display->drawLogBuffer(0, 0);
       Heltec.display->display();
+      scanCount++;
+      if(scanCount > 5)
+      {
+        esp_deep_sleep_start();
+        return;
+      }
       delay(3100);
       return;
     }
