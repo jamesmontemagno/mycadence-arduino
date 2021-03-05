@@ -16,7 +16,7 @@ Inspired & code forked from https://github.com/snowzach/echbt, which is an aweso
 
 ## Compatible Sensors
 * [Moofit Cadence](https://amzn.to/349DpZM)
-* [Wahoo](https://amzn.to/2KEdC50)
+* [Wahoo](https://amzn.to/3h2Lyo1)
 * [Magene](https://amzn.to/3raJ0Jd)
 * [Garmin](https://amzn.to/2WtSgdl)
 * Other cadence sensors that broadcast Speed & Cadence specification
